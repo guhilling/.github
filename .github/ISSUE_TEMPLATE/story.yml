@@ -5,9 +5,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        The four fields below are what turned round trips into autonomous runs on this project.
-        Fill in what you know — an empty field is better than an invented one, because a wrong
-        constraint is followed and a missing one gets asked about.
+        The five fields below are what turned round trips into autonomous runs on
+        ai-assisted-todolist. Fill in what you know — an empty field is better than an invented one,
+        because a wrong constraint is followed and a missing one gets asked about.
 
   - type: textarea
     id: intent
