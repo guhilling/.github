@@ -1,0 +1,73 @@
+name: Story
+description: A piece of work Claude should be able to pick up and finish without a conversation first.
+labels: ["story"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The four fields below are what turned round trips into autonomous runs on this project.
+        Fill in what you know — an empty field is better than an invented one, because a wrong
+        constraint is followed and a missing one gets asked about.
+
+  - type: textarea
+    id: intent
+    attributes:
+      label: What and why
+      description: >
+        The outcome you want and the reason for it. Prefer the problem to the mechanism: a
+        mechanism that turns out not to work costs a round trip, an outcome does not. An issue that
+        names a library which then turns out not to fit comes back as a question.
+      placeholder: |
+        Exported CSV files show garbled umlauts when opened in a spreadsheet, so people fix
+        every export by hand.
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+      description: >
+        How we will both know it is finished — checkable if possible. A command, a query, a
+        green check. "Fix the warnings" leaves open whether silencing one counts; "the build
+        reports no warning on main" does not.
+      placeholder: |
+        - The build is green with a test that fails without the change
+        - A file with umlauts, exported and opened in a spreadsheet, shows them correctly
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: >
+        The boundaries that hold whatever the implementation turns out to be — dependencies,
+        compatibility, performance, house style. These survive contact with the code when a
+        named mechanism does not.
+      placeholder: |
+        - No new runtime dependency
+        - The columns of the export must not change
+        - Prefer the clear version over the clever one
+
+  - type: textarea
+    id: decisions
+    attributes:
+      label: Decisions — yours or mine
+      description: >
+        Name the choices you want to make yourself, and say the rest are delegated. This is the
+        single most useful field: `CLAUDE.md` says to stop and ask rather than guess, so an
+        unmarked decision becomes a question and the run stops there.
+      placeholder: |
+        Mine: the encoding we settle on, and whether we take a new dependency.
+        Yours: naming, file layout, how it is tested.
+
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of scope
+      description: >
+        What not to touch, and anything you have already considered and rejected. Saves the
+        proposal coming back to you.
+      placeholder: |
+        Don't restructure the export code; don't change the release workflow.
